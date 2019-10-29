@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/iphis/adlap2-bundle.svg?branch=master)](https://travis-ci.org/iphis/adlap2-bundle)
+
 Installation
 ============
 
