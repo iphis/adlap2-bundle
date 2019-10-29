@@ -1,8 +1,8 @@
 <?php
 
 /*
- * This file is part of the FOSUserBundle package.
- * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+ * This file is part of the Adldap2Bundle package.
+ * (c) TK-Schulsoftware <https://tk-schulsoftware.de/>
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
@@ -22,24 +22,28 @@ class Adldap2Extension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-        $connectionSettings = $config['connection_settings'];
-        if (!empty($connectionSettings['account_suffix'])) {
-            $connectionSettings['account_suffix'] = '@'.$connectionSettings['account_suffix'];
-        } else {
-            unset($connectionSettings['account_suffix']);
+
+        foreach (array_keys($config) as $connectionName) {
+            $connectionSettings = $config[$connectionName];
+            if (!empty($connectionSettings['account_suffix']) && !stristr($connectionSettings['account_suffix'], '@')) {
+                $connectionSettings['account_suffix'] = '@'.$connectionSettings['account_suffix'];
+            } elseif (empty($connectionSettings['account_suffix'])) {
+                unset($connectionSettings['account_suffix']);
+            }
+
+            $service = $container->register('adldap.'.$connectionName, Adldap::class);
+            $service->setFactory(
+                array(
+                    Adldap2Factory::class,
+                    'createConnection',
+                )
+            );
+            $service->setArguments(
+                array(
+                    $connectionSettings,
+                )
+            );
         }
-        $service = $container->register('adldap2', Adldap::class);
-        $service->setFactory(
-            array(
-                Adldap2Factory::class,
-                'createConnection',
-            )
-        );
-        $service->setArguments(
-            array(
-                $connectionSettings,
-            )
-        );
     }
 
     public function getAlias()
