@@ -17,8 +17,8 @@
   "require": {
     "php": ">=7.0",
     "adldap2/adldap2": "^10",
-    "symfony/config": "^4.3",
-    "symfony/dependency-injection": "^4.3",
+    "symfony/config": "^2.8.49|^3.4.30|^4.3",
+    "symfony/dependency-injection": "^2.8.49|^3.4.30|^4.3",
     "symfony/http-kernel": "^2.8.49|^3.4.30|^4.3"
   },
   "require-dev": {
