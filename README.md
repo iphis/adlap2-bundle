@@ -1,7 +1,8 @@
 [![Build Status](https://travis-ci.org/iphis/adlap2-bundle.svg?branch=master)](https://travis-ci.org/iphis/adlap2-bundle)
+[![Code Quality](https://scrutinizer-ci.com/g/iphis/adlap2-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/iphis/adlap2-bundle/?branch=master)
 
-Based on the work from https://github.com/sgomez/adldap2-bundle
-Updated to match the latest Symfony4 Bundle Best-Practices.
+Based on the work from [sgomez/adldap2-bundle](https://github.com/sgomez/adldap2-bundle)
+Updated to match the latest Symfony4 Bundle Best-Practices and ADLDAP2 V10.
 
 Installation
 ============

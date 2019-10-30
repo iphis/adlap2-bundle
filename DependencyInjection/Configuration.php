@@ -23,14 +23,16 @@ class Configuration implements ConfigurationInterface
             $rootNode = $treeBuilder->getRootNode();
         } else {
             // BC layer for symfony/config 4.1 and older
+	        /** @scrutinizer ignore-deprecated */
             $rootNode = $treeBuilder->root('adldap2');
         }
 
         $rootNode
-            ->requiresAtLeastOneElement()
+	        /** @scrutinizer ignore-call */
+	        ->requiresAtLeastOneElement()
             ->useAttributeAsKey('name')
             ->prototype('array')
-            ->children()
+
             ->arrayNode('hosts')->prototype('scalar')->end()->isRequired()->requiresAtLeastOneElement()->end()
             ->scalarNode('base_dn')->isRequired()->cannotBeEmpty()->end()
             ->scalarNode('username')->isRequired()->cannotBeEmpty()->end()
