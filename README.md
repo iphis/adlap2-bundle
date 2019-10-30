@@ -1,5 +1,8 @@
 [![Build Status](https://travis-ci.org/iphis/adlap2-bundle.svg?branch=master)](https://travis-ci.org/iphis/adlap2-bundle)
 
+Based on the work from https://github.com/sgomez/adldap2-bundle
+Updated to match the latest Symfony4 Bundle Best-Practices.
+
 Installation
 ============
 
